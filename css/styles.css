@@ -1,15 +1,16 @@
 /* 
-   Criticaide Website Styles
-   A clean, modern design for the Criticaide landing page
+   Criticaide Website Styles - Dark Mode
+   A clean, modern dark theme matching the app's appearance
 */
 
 :root {
     /* Colors */
     --primary-color: #0ea5e9; /* A vibrant blue matching the app */
     --primary-dark: #075985;
-    --secondary-color: #dbeafe;
+    --secondary-color: rgba(14, 165, 233, 0.1);
     --dark-color: #1a1b1e;
-    --light-color: #f8fafc;
+    --darker-color: #111213;
+    --light-color: #e5e7eb;
     --gray-100: #f3f4f6;
     --gray-200: #e5e7eb;
     --gray-300: #d1d5db;
@@ -19,6 +20,13 @@
     --gray-700: #374151;
     --gray-800: #1f2937;
     --gray-900: #111827;
+    
+    /* Background and text colors for dark mode */
+    --bg-primary: #1a1b1e;
+    --bg-secondary: #25262b;
+    --bg-card: #2c2e33;
+    --text-primary: #e5e7eb;
+    --text-secondary: #9ca3af;
     
     /* Typography */
     --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
@@ -55,8 +63,8 @@ html {
 body {
     font-family: var(--font-main);
     line-height: 1.6;
-    color: var(--gray-800);
-    background-color: var(--light-color);
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
 }
 
 .container {
@@ -71,7 +79,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: var(--spacing-md);
-    color: var(--gray-900);
+    color: var(--text-primary);
 }
 
 p {
@@ -122,12 +130,13 @@ ul {
 }
 
 .btn-secondary {
-    background-color: var(--gray-200);
-    color: var(--gray-800);
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .btn-secondary:hover {
-    background-color: var(--gray-300);
+    background-color: var(--bg-secondary);
     transform: translateY(-2px);
 }
 
@@ -149,11 +158,12 @@ ul {
 .site-header {
     position: sticky;
     top: 0;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(26, 27, 30, 0.95);
     backdrop-filter: blur(10px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     z-index: 100;
     padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .main-nav {
@@ -185,7 +195,7 @@ ul {
 }
 
 .nav-links a {
-    color: var(--gray-700);
+    color: var(--text-secondary);
     font-weight: 500;
 }
 
@@ -202,7 +212,7 @@ ul {
 .bar {
     width: 25px;
     height: 3px;
-    background-color: var(--gray-700);
+    background-color: var(--text-secondary);
     margin: 3px 0;
     transition: var(--transition-fast);
 }
@@ -210,7 +220,7 @@ ul {
 /* Hero Section */
 .hero {
     padding: var(--spacing-xl) 0;
-    background: linear-gradient(135deg, var(--light-color) 0%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
 }
 
 .hero .container {
@@ -233,19 +243,20 @@ ul {
 .hero-img {
     max-width: 100%;
     border-radius: var(--radius-lg);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .hero h1 {
     font-size: 3rem;
     margin-bottom: var(--spacing-md);
-    color: var(--gray-900);
+    color: var(--text-primary);
 }
 
 .hero p {
     font-size: 1.2rem;
     margin-bottom: var(--spacing-lg);
-    color: var(--gray-700);
+    color: var(--text-secondary);
 }
 
 .hero-buttons {
@@ -266,7 +277,7 @@ ul {
 
 .section-header p {
     font-size: 1.2rem;
-    color: var(--gray-600);
+    color: var(--text-secondary);
     max-width: 700px;
     margin: 0 auto;
 }
@@ -274,7 +285,7 @@ ul {
 /* Features Section */
 .features {
     padding: var(--spacing-xl) 0;
-    background-color: white;
+    background-color: var(--bg-secondary);
 }
 
 .feature-grid {
@@ -284,11 +295,12 @@ ul {
 }
 
 .feature-card {
-    background-color: var(--gray-100);
+    background-color: var(--bg-card);
     border-radius: var(--radius-md);
     padding: var(--spacing-lg);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: transform var(--transition-normal);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .feature-card:hover {
@@ -309,7 +321,7 @@ ul {
 /* How It Works Section */
 .how-it-works {
     padding: var(--spacing-xl) 0;
-    background-color: var(--gray-100);
+    background-color: var(--bg-primary);
 }
 
 .steps {
@@ -346,7 +358,7 @@ ul {
 /* Download Section */
 .download {
     padding: var(--spacing-xl) 0;
-    background-color: white;
+    background-color: var(--bg-secondary);
 }
 
 .download-cards {
@@ -357,13 +369,14 @@ ul {
 }
 
 .download-card {
-    background-color: var(--gray-100);
+    background-color: var(--bg-card);
     border-radius: var(--radius-md);
     padding: var(--spacing-lg);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 300px;
     transition: transform var(--transition-normal);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .download-card:hover {
@@ -376,7 +389,7 @@ ul {
 
 .download-icon {
     font-size: 3rem;
-    color: var(--gray-700);
+    color: var(--text-secondary);
     margin-bottom: var(--spacing-md);
 }
 
@@ -387,12 +400,12 @@ ul {
 
 .download-card p {
     margin-bottom: var(--spacing-md);
-    color: var(--gray-600);
+    color: var(--text-secondary);
 }
 
 .download-count {
     font-size: 0.9rem;
-    color: var(--gray-500);
+    color: var(--text-secondary);
     margin-bottom: var(--spacing-md);
 }
 
@@ -414,15 +427,17 @@ ul {
 
 .requirement {
     padding: var(--spacing-md);
-    background-color: var(--gray-100);
+    background-color: var(--bg-card);
     border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* Footer Styles */
 .site-footer {
-    background-color: var(--gray-900);
-    color: var(--gray-300);
+    background-color: var(--darker-color);
+    color: var(--text-secondary);
     padding: var(--spacing-xl) 0 var(--spacing-md);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .footer-content {
@@ -451,7 +466,7 @@ ul {
 }
 
 .footer-links a {
-    color: var(--gray-300);
+    color: var(--text-secondary);
 }
 
 .footer-links a:hover {
@@ -461,7 +476,7 @@ ul {
 .footer-bottom {
     text-align: center;
     padding-top: var(--spacing-lg);
-    border-top: 1px solid var(--gray-700);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* Responsive Styles */
@@ -491,9 +506,9 @@ ul {
         top: 100%;
         left: 0;
         width: 100%;
-        background-color: white;
+        background-color: var(--bg-secondary);
         padding: var(--spacing-md);
-        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
         flex-direction: column;
     }
     

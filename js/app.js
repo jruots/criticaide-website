@@ -74,13 +74,12 @@ function detectUserOS() {
  */
 function setupDownloadLinks() {
     // Default to the latest release download URLs
-    // These will be updated with actual URLs when fetching download counts
     const windowsBtn = document.getElementById('windows-download-btn');
     const macBtn = document.getElementById('mac-download-btn');
     
     // Set initial URLs (these will be updated when we fetch release info)
-    windowsBtn.href = "https://github.com/jruots/criticaide/releases/latest/download/Criticaide-Setup-0.3.0.exe";
-    macBtn.href = "https://github.com/jruots/criticaide/releases/latest/download/Criticaide-0.3.0-arm64.dmg";
+    windowsBtn.href = "https://github.com/jruots/criticaide/releases/latest/download/Criticaide-Setup-0.3.0-Windows.zip";
+    macBtn.href = "https://github.com/jruots/criticaide/releases/latest/download/Criticaide-Setup-0.3.0-Mac.zip";
 }
 
 /**
@@ -111,9 +110,10 @@ function fetchDownloadCounts() {
             // Look for the assets in the latest release
             latestRelease.assets.forEach(asset => {
                 const name = asset.name.toLowerCase();
-                if (name.includes('.exe') || name.includes('.msi')) {
+                // Updated file name patterns to match the actual release files
+                if (name.includes('windows')) {
                     windowsAsset = asset;
-                } else if (name.includes('.dmg')) {
+                } else if (name.includes('mac')) {
                     macAsset = asset;
                 }
             });
@@ -122,6 +122,7 @@ function fetchDownloadCounts() {
             updateDownloadInfo('windows', windowsAsset);
             updateDownloadInfo('mac', macAsset);
             
+            console.log("Release assets found:", { windowsAsset, macAsset });
         })
         .catch(error => {
             console.error("Error fetching download counts:", error);

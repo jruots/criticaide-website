@@ -1,0 +1,1088 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+================================================================
+File Summary
+================================================================
+
+Purpose:
+--------
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+
+File Format:
+------------
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Multiple file entries, each consisting of:
+  a. A separator line (================)
+  b. The file path (File: path/to/file)
+  c. Another separator line
+  d. The full contents of the file
+  e. A blank line
+
+Usage Guidelines:
+-----------------
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+
+Notes:
+------
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+
+Additional Info:
+----------------
+
+================================================================
+Directory Structure
+================================================================
+css/style.css
+index.html
+js/app.js
+README.md
+
+================================================================
+Files
+================================================================
+
+================
+File: css/style.css
+================
+/* 
+   Criticaide Website Styles
+   A clean, modern design for the Criticaide landing page
+*/
+
+:root {
+    /* Colors */
+    --primary-color: #0ea5e9; /* A vibrant blue matching the app */
+    --primary-dark: #075985;
+    --secondary-color: #dbeafe;
+    --dark-color: #1a1b1e;
+    --light-color: #f8fafc;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-400: #9ca3af;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-800: #1f2937;
+    --gray-900: #111827;
+    
+    /* Typography */
+    --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    --font-heading: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 4rem;
+    
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    line-height: 1.6;
+    color: var(--gray-800);
+    background-color: var(--light-color);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-md);
+    color: var(--gray-900);
+}
+
+p {
+    margin-bottom: var(--spacing-md);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border: none;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: var(--gray-200);
+    color: var(--gray-800);
+}
+
+.btn-secondary:hover {
+    background-color: var(--gray-300);
+    transform: translateY(-2px);
+}
+
+.btn-download {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+}
+
+.btn-download:hover {
+    background-color: var(--primary-dark);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Header Styles */
+.site-header {
+    position: sticky;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    padding: 1rem 0;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.logo-img {
+    height: 40px;
+    margin-right: var(--spacing-sm);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links li {
+    margin-left: var(--spacing-lg);
+}
+
+.nav-links a {
+    color: var(--gray-700);
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--gray-700);
+    margin: 3px 0;
+    transition: var(--transition-fast);
+}
+
+/* Hero Section */
+.hero {
+    padding: var(--spacing-xl) 0;
+    background: linear-gradient(135deg, var(--light-color) 0%, var(--secondary-color) 100%);
+}
+
+.hero .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-xl);
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-img {
+    max-width: 100%;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--gray-900);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: var(--spacing-lg);
+    color: var(--gray-700);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+/* Section Header */
+.section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.section-header p {
+    font-size: 1.2rem;
+    color: var(--gray-600);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Features Section */
+.features {
+    padding: var(--spacing-xl) 0;
+    background-color: white;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.feature-card {
+    background-color: var(--gray-100);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform var(--transition-normal);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* How It Works Section */
+.how-it-works {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--gray-100);
+}
+
+.steps {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.step {
+    display: flex;
+    margin-bottom: var(--spacing-lg);
+    align-items: flex-start;
+}
+
+.step-number {
+    background-color: var(--primary-color);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-right: var(--spacing-md);
+    flex-shrink: 0;
+}
+
+.step-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Download Section */
+.download {
+    padding: var(--spacing-xl) 0;
+    background-color: white;
+}
+
+.download-cards {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.download-card {
+    background-color: var(--gray-100);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    width: 300px;
+    transition: transform var(--transition-normal);
+}
+
+.download-card:hover {
+    transform: translateY(-5px);
+}
+
+.download-card.highlighted {
+    border: 2px solid var(--primary-color);
+}
+
+.download-icon {
+    font-size: 3rem;
+    color: var(--gray-700);
+    margin-bottom: var(--spacing-md);
+}
+
+.download-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.download-card p {
+    margin-bottom: var(--spacing-md);
+    color: var(--gray-600);
+}
+
+.download-count {
+    font-size: 0.9rem;
+    color: var(--gray-500);
+    margin-bottom: var(--spacing-md);
+}
+
+.system-requirements {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.system-requirements h3 {
+    margin-bottom: var(--spacing-md);
+}
+
+.requirements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.requirement {
+    padding: var(--spacing-md);
+    background-color: var(--gray-100);
+    border-radius: var(--radius-md);
+}
+
+/* Footer Styles */
+.site-footer {
+    background-color: var(--gray-900);
+    color: var(--gray-300);
+    padding: var(--spacing-xl) 0 var(--spacing-md);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+}
+
+.footer-logo-img {
+    height: 30px;
+    margin-right: var(--spacing-sm);
+}
+
+.footer-links ul {
+    display: flex;
+    gap: var(--spacing-lg);
+}
+
+.footer-links a {
+    color: var(--gray-300);
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--gray-700);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .hero .container {
+        flex-direction: column;
+    }
+    
+    .hero-content {
+        text-align: center;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .download-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        padding: var(--spacing-md);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        flex-direction: column;
+    }
+    
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .nav-links li {
+        margin: var(--spacing-sm) 0;
+    }
+    
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    
+    .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .menu-toggle.active .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .footer-links ul {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .download-card {
+        width: 100%;
+    }
+}
+
+================
+File: index.html
+================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criticaide - Your Shield Against Digital Manipulation</title>
+    <meta name="description" content="Criticaide: A desktop app that helps you analyze text content for manipulation tactics while strengthening your critical thinking skills.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <nav class="main-nav">
+                <div class="logo">
+                    <img src="images/logo.png" alt="Criticaide Logo" class="logo-img">
+                    <span>Criticaide</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#download" class="btn btn-download">Download</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Your Shield Against Digital Manipulation</h1>
+                <p>Criticaide analyzes text for manipulation tactics, credibility issues, and reasoning flaws to strengthen your critical thinking in an age of information overload.</p>
+                <div class="hero-buttons">
+                    <a href="#download" class="btn btn-primary">Download Now</a>
+                    <a href="#features" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/hero-image.png" alt="Criticaide in action" class="hero-img">
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Key Features</h2>
+                <p>Criticaide uses sophisticated AI to protect you from misinformation and manipulation.</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Your Personal Shield</h3>
+                    <p>Identifies manipulation techniques, credibility issues, and reasoning flaws in text content.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Critical Thinking Development</h3>
+                    <p>Helps you understand persuasion and manipulation mechanics through detailed analyses.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Advanced Agent Analysis</h3>
+                    <p>Utilizes specialized AI agents to detect cognitive biases, emotional manipulation, and logical fallacies.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Complete Privacy</h3>
+                    <p>All processing happens locally on your machine - your data never leaves your device.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Instant Analysis</h3>
+                    <p>Global keyboard shortcuts for quick analysis of any text you encounter online.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Detailed Insights</h3>
+                    <p>Receive credibility scores, specific manipulation tactics, and actionable recommendations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>A simple process with powerful results.</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Select Text</h3>
+                        <p>Find content you want to analyze - news articles, social media posts, or any text.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Use Shortcut</h3>
+                        <p>Copy the text (Ctrl+C) then press the global shortcut (Ctrl+Alt+Shift+T) to analyze.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Review Analysis</h3>
+                        <p>Get instant insights on potential manipulation, credibility issues, and reasoning flaws.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Make Informed Decisions</h3>
+                        <p>Use the detailed recommendations to evaluate the content more critically.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="download">
+        <div class="container">
+            <div class="section-header">
+                <h2>Download Criticaide</h2>
+                <p>Get started with Criticaide today - it's free and open source.</p>
+            </div>
+            <div class="download-cards">
+                <div class="download-card" id="windows-download">
+                    <div class="download-icon">
+                        <i class="fab fa-windows"></i>
+                    </div>
+                    <h3>Windows</h3>
+                    <p>For Windows 11</p>
+                    <div class="download-count"><span id="windows-count">--</span> downloads</div>
+                    <a href="#" class="btn btn-download" id="windows-download-btn">Download for Windows</a>
+                </div>
+                <div class="download-card" id="mac-download">
+                    <div class="download-icon">
+                        <i class="fab fa-apple"></i>
+                    </div>
+                    <h3>macOS</h3>
+                    <p>For macOS on Apple Silicon</p>
+                    <div class="download-count"><span id="mac-count">--</span> downloads</div>
+                    <a href="#" class="btn btn-download" id="mac-download-btn">Download for Mac</a>
+                </div>
+            </div>
+            <div class="system-requirements">
+                <h3>System Requirements</h3>
+                <div class="requirements-grid">
+                    <div class="requirement">
+                        <strong>Windows:</strong> Windows 11 (x64)
+                    </div>
+                    <div class="requirement">
+                        <strong>macOS:</strong> Apple Silicon (arm64)
+                    </div>
+                    <div class="requirement">
+                        <strong>RAM:</strong> 8GB recommended (4GB minimum)
+                    </div>
+                    <div class="requirement">
+                        <strong>Storage:</strong> 2GB free space
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="Criticaide Logo" class="footer-logo-img">
+                    <span>Criticaide</span>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="https://github.com/jruots/criticaide" target="_blank">GitHub</a></li>
+                        <li><a href="https://github.com/jruots/criticaide/issues" target="_blank">Report Issues</a></li>
+                        <li><a href="https://github.com/jruots/criticaide/blob/main/LICENSE" target="_blank">License</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year">2024</span> Criticaide. Licensed under MIT.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/app.js"></script>
+</body>
+</html>
+
+================
+File: js/app.js
+================
+/**
+ * Criticaide Website JavaScript
+ * Handles OS detection, download links, and download count fetching
+ */
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Update copyright year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    
+    // Initialize UI
+    initMobileNav();
+    detectUserOS();
+    setupDownloadLinks();
+    fetchDownloadCounts();
+});
+
+/**
+ * Initialize mobile navigation menu toggle
+ */
+function initMobileNav() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    menuToggle.addEventListener('click', function() {
+        menuToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+    
+    // Close menu when clicking on links
+    const links = document.querySelectorAll('.nav-links a');
+    links.forEach(link => {
+        link.addEventListener('click', function() {
+            menuToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
+    });
+}
+
+/**
+ * Detect user's operating system and highlight appropriate download
+ */
+function detectUserOS() {
+    const userAgent = window.navigator.userAgent;
+    const platform = window.navigator.platform;
+    const macPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K', 'Macintosh', 'MacIntel', 'MacAPP', 'MacPPC', 'MacOSX', 'iPad', 'iPhone', 'iPod'];
+    const windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'];
+    
+    let isWindows = false;
+    let isMac = false;
+    
+    // Check platform first
+    if (windowsPlatforms.indexOf(platform) !== -1) {
+        isWindows = true;
+    } else if (macPlatforms.indexOf(platform) !== -1) {
+        isMac = true;
+    }
+    
+    // If platform detection failed, check user agent
+    if (!isWindows && !isMac) {
+        isWindows = userAgent.indexOf('Windows') !== -1;
+        isMac = userAgent.indexOf('Mac') !== -1 || userAgent.indexOf('macOS') !== -1;
+    }
+    
+    // Highlight appropriate download card
+    if (isWindows) {
+        document.getElementById('windows-download').classList.add('highlighted');
+    } else if (isMac) {
+        document.getElementById('mac-download').classList.add('highlighted');
+    }
+}
+
+/**
+ * Set up download link URLs from GitHub releases
+ */
+function setupDownloadLinks() {
+    // Default to the latest release download URLs
+    // These will be updated with actual URLs when fetching download counts
+    const windowsBtn = document.getElementById('windows-download-btn');
+    const macBtn = document.getElementById('mac-download-btn');
+    
+    // Set initial URLs (these will be updated when we fetch release info)
+    windowsBtn.href = "https://github.com/jruots/criticaide/releases/latest/download/Criticaide-Setup-0.3.0.exe";
+    macBtn.href = "https://github.com/jruots/criticaide/releases/latest/download/Criticaide-0.3.0-arm64.dmg";
+}
+
+/**
+ * Fetch download counts from GitHub API
+ */
+function fetchDownloadCounts() {
+    const apiUrl = "https://api.github.com/repos/jruots/criticaide/releases";
+    
+    fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`GitHub API error: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.length === 0) {
+                throw new Error("No releases found");
+            }
+            
+            // Get the latest release
+            const latestRelease = data[0];
+            
+            // Find Windows and Mac assets
+            let windowsAsset = null;
+            let macAsset = null;
+            
+            // Look for the assets in the latest release
+            latestRelease.assets.forEach(asset => {
+                const name = asset.name.toLowerCase();
+                if (name.includes('.exe') || name.includes('.msi')) {
+                    windowsAsset = asset;
+                } else if (name.includes('.dmg')) {
+                    macAsset = asset;
+                }
+            });
+            
+            // Update download counts and URLs
+            updateDownloadInfo('windows', windowsAsset);
+            updateDownloadInfo('mac', macAsset);
+            
+        })
+        .catch(error => {
+            console.error("Error fetching download counts:", error);
+            document.getElementById('windows-count').textContent = "N/A";
+            document.getElementById('mac-count').textContent = "N/A";
+        });
+}
+
+/**
+ * Update download information (count and URL) for a specific platform
+ */
+function updateDownloadInfo(platform, asset) {
+    const countElement = document.getElementById(`${platform}-count`);
+    const downloadBtn = document.getElementById(`${platform}-download-btn`);
+    
+    if (asset) {
+        // Update count
+        countElement.textContent = asset.download_count.toLocaleString();
+        
+        // Update download URL
+        downloadBtn.href = asset.browser_download_url;
+        
+        // Add event listener to track downloads
+        downloadBtn.addEventListener('click', function() {
+            // For tracking purposes, you could implement analytics here if needed
+            console.log(`${platform} download clicked`);
+        });
+    } else {
+        countElement.textContent = "0";
+    }
+}
+
+/**
+ * Show a simple notification
+ */
+function showNotification(message, isError = false) {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `notification ${isError ? 'error' : 'success'}`;
+    notification.textContent = message;
+    
+    // Add to body
+    document.body.appendChild(notification);
+    
+    // Show notification
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 10);
+    
+    // Remove after delay
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 300);
+    }, 3000);
+}
+
+================
+File: README.md
+================
+# Criticaide Website
+
+This repository contains the official website for [Criticaide](https://github.com/jruots/criticaide), a desktop application that helps users analyze text content for manipulation tactics while strengthening critical thinking skills.
+
+## Website Overview
+
+The Criticaide website is a simple, modern landing page that:
+
+- Provides information about what Criticaide is and how it works
+- Highlights key features and benefits
+- Offers direct downloads for Windows and macOS
+- Displays download counts using the GitHub API
+
+## Technical Details
+
+The website is built using:
+
+- HTML5
+- CSS3
+- Vanilla JavaScript
+- GitHub Pages for hosting
+- GitHub API for fetching download statistics
+
+## Development
+
+To run this website locally:
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/jruots/criticaide-website.git
+   ```
+
+2. Open the project in your code editor
+
+3. Launch with a local server (VS Code's Live Server extension works well)
+
+## Deployment
+
+This website is automatically deployed via GitHub Pages whenever changes are pushed to the main branch.
+
+## Contributing
+
+Contributions to improve the website are welcome. Please feel free to submit pull requests.
+
+## License
+
+MIT License - See the LICENSE file for details.
+
+
+
+================================================================
+End of Codebase
+================================================================
