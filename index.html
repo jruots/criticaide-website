@@ -124,7 +124,7 @@
                     <div class="step-number">2</div>
                     <div class="step-content">
                         <h3>Use Shortcut</h3>
-                        <p>Copy the text (Ctrl+C) then press the global shortcut (Ctrl+Alt+Shift+T) to analyze.</p>
+                        <p>Copy the text (<span class="copy-shortcut">Ctrl+C</span>) then press the global shortcut (<span class="global-shortcut">Ctrl+Alt+Shift+T</span>) to analyze.</p>
                     </div>
                 </div>
                 <div class="step">
@@ -158,7 +158,13 @@
                     </div>
                     <h3>Windows</h3>
                     <p>For Windows 11</p>
-                    <div class="download-count"><span id="windows-count">--</span> downloads</div>
+                    <div class="download-count">
+                        <span id="windows-count">--</span> downloads
+                        <span class="tooltip">Total downloads for this release</span>
+                    </div>
+                    <div class="release-version">
+                        <span id="windows-release-info">latest</span>
+                    </div>
                     <a href="#" class="btn btn-download" id="windows-download-btn">Download for Windows</a>
                 </div>
                 <div class="download-card" id="mac-download">
@@ -167,7 +173,13 @@
                     </div>
                     <h3>macOS</h3>
                     <p>For macOS on Apple Silicon</p>
-                    <div class="download-count"><span id="mac-count">--</span> downloads</div>
+                    <div class="download-count">
+                        <span id="mac-count">--</span> downloads
+                        <span class="tooltip">Total downloads for this release</span>
+                    </div>
+                    <div class="release-version">
+                        <span id="mac-release-info">latest</span>
+                    </div>
                     <a href="#" class="btn btn-download" id="mac-download-btn">Download for Mac</a>
                 </div>
             </div>
