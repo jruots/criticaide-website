@@ -76,7 +76,6 @@ function detectUserOS() {
  * Update shortcut text based on the user's OS
  */
 function updateShortcutText() {
-    const shortcutElements = document.querySelectorAll('.shortcut-text');
     const copyElements = document.querySelectorAll('.copy-shortcut');
     const globalElements = document.querySelectorAll('.global-shortcut');
     
@@ -118,18 +117,45 @@ function setupDownloadLinks() {
 }
 
 /**
- * Fetch download counts from GitHub API
- */
-/**
- * Fetch download counts from GitHub API
- * This version aggregates download counts across ALL releases
+ * Fetch download counts from GitHub API with caching
+ * This prevents excessive API requests and handles rate limiting
  */
 function fetchDownloadCounts() {
     const apiUrl = "https://api.github.com/repos/jruots/criticaide/releases";
+    const cacheKey = 'criticaide_release_data';
+    const cacheTimeKey = 'criticaide_release_time';
+    const cacheExpiry = 3600000; // 1 hour in milliseconds
     
+    // Check cache first
+    const cachedData = localStorage.getItem(cacheKey);
+    const cacheTime = localStorage.getItem(cacheTimeKey);
+    
+    // Use cache if it exists and is not expired
+    if (cachedData && cacheTime) {
+        const cacheAge = Date.now() - parseInt(cacheTime);
+        if (cacheAge < cacheExpiry) {
+            try {
+                const releases = JSON.parse(cachedData);
+                console.log('Using cached release data');
+                updateDownloadCounts(releases);
+                return;
+            } catch (e) {
+                console.warn('Failed to parse cached data:', e);
+                // Continue to fetch from API if cache parsing fails
+            }
+        } else {
+            console.log('Cache expired, fetching fresh data');
+        }
+    }
+    
+    // Fetch fresh data from GitHub API
     fetch(apiUrl)
         .then(response => {
             if (!response.ok) {
+                // Check for rate limiting
+                if (response.status === 403) {
+                    throw new Error('GitHub API rate limit exceeded. Try again later.');
+                }
                 throw new Error(`GitHub API error: ${response.status}`);
             }
             return response.json();
@@ -139,69 +165,106 @@ function fetchDownloadCounts() {
                 throw new Error("No releases found");
             }
             
-            // Get the latest release for download links
-            const latestRelease = releases[0];
+            // Cache the response for future use
+            try {
+                localStorage.setItem(cacheKey, JSON.stringify(releases));
+                localStorage.setItem(cacheTimeKey, Date.now().toString());
+                console.log('GitHub release data cached');
+            } catch (e) {
+                console.warn('Failed to cache release data:', e);
+                // Continue even if caching fails
+            }
             
-            // Variables to track the total download counts
-            let totalWindowsDownloads = 0;
-            let totalMacDownloads = 0;
-            
-            // Latest assets for download links
-            let latestWindowsAsset = null;
-            let latestMacAsset = null;
-            
-            // Process all releases to get total download count
-            releases.forEach(release => {
-                release.assets.forEach(asset => {
-                    const name = asset.name.toLowerCase();
-                    
-                    // Count downloads for Windows
-                    if (name.includes('windows') || 
-                       (!name.includes('mac') && 
-                        (name.endsWith('.exe') || name.endsWith('.msi') || name.endsWith('.zip')))) {
-                        totalWindowsDownloads += asset.download_count;
-                        
-                        // If this is from the latest release, store asset for download link
-                        if (release.id === latestRelease.id && !latestWindowsAsset) {
-                            latestWindowsAsset = asset;
-                        }
-                    }
-                    
-                    // Count downloads for Mac
-                    if (name.includes('mac') && 
-                       !name.includes('instructions') && 
-                       (name.endsWith('.dmg') || name.endsWith('.zip'))) {
-                        totalMacDownloads += asset.download_count;
-                        
-                        // If this is from the latest release, store asset for download link
-                        if (release.id === latestRelease.id && !latestMacAsset) {
-                            latestMacAsset = asset;
-                        }
-                    }
-                });
-            });
-            
-            console.log("Total downloads - Windows:", totalWindowsDownloads, "Mac:", totalMacDownloads);
-            
-            // Update the download counts on the page
-            document.getElementById('windows-count').textContent = totalWindowsDownloads.toLocaleString();
-            document.getElementById('mac-count').textContent = totalMacDownloads.toLocaleString();
-            
-            // Update the tooltips to reflect that these are total counts
-            const tooltips = document.querySelectorAll('.tooltip');
-            tooltips.forEach(tooltip => {
-                tooltip.textContent = "Total downloads across all releases";
-            });
-            
-            // Update the download links to the latest release
-            updateDownloadLink('windows', latestWindowsAsset);
-            updateDownloadLink('mac', latestMacAsset);
+            // Process the data
+            updateDownloadCounts(releases);
         })
         .catch(error => {
             console.error("Error fetching download counts:", error);
+            
+            // If we have cached data, use it as fallback even if expired
+            if (cachedData) {
+                try {
+                    console.log('Using expired cache as fallback');
+                    updateDownloadCounts(JSON.parse(cachedData));
+                    return;
+                } catch (e) {
+                    console.error('Failed to use cache fallback:', e);
+                }
+            }
+            
+            // Display error state
             document.getElementById('windows-count').textContent = "N/A";
             document.getElementById('mac-count').textContent = "N/A";
+            
+            // Update tooltips to explain the error
+            const tooltips = document.querySelectorAll('.tooltip');
+            tooltips.forEach(tooltip => {
+                tooltip.textContent = "Could not fetch download data";
+            });
         });
+}
+
+/**
+ * Process GitHub releases data and update the UI
+ */
+function updateDownloadCounts(releases) {
+    // Get the latest release for download links
+    const latestRelease = releases[0];
+    
+    // Variables to track the total download counts
+    let totalWindowsDownloads = 0;
+    let totalMacDownloads = 0;
+    
+    // Latest assets for download links
+    let latestWindowsAsset = null;
+    let latestMacAsset = null;
+    
+    // Process all releases to get total download count
+    releases.forEach(release => {
+        release.assets.forEach(asset => {
+            const name = asset.name.toLowerCase();
+            
+            // Count downloads for Windows
+            if (name.includes('windows') || 
+                (!name.includes('mac') && 
+                (name.endsWith('.exe') || name.endsWith('.msi') || name.endsWith('.zip')))) {
+                totalWindowsDownloads += asset.download_count;
+                
+                // If this is from the latest release, store asset for download link
+                if (release.id === latestRelease.id && !latestWindowsAsset) {
+                    latestWindowsAsset = asset;
+                }
+            }
+            
+            // Count downloads for Mac
+            if (name.includes('mac') && 
+                !name.includes('instructions') && 
+                (name.endsWith('.dmg') || name.endsWith('.zip'))) {
+                totalMacDownloads += asset.download_count;
+                
+                // If this is from the latest release, store asset for download link
+                if (release.id === latestRelease.id && !latestMacAsset) {
+                    latestMacAsset = asset;
+                }
+            }
+        });
+    });
+    
+    console.log("Total downloads - Windows:", totalWindowsDownloads, "Mac:", totalMacDownloads);
+    
+    // Update the download counts on the page
+    document.getElementById('windows-count').textContent = totalWindowsDownloads.toLocaleString();
+    document.getElementById('mac-count').textContent = totalMacDownloads.toLocaleString();
+    
+    // Update the tooltips to reflect that these are total counts
+    const tooltips = document.querySelectorAll('.tooltip');
+    tooltips.forEach(tooltip => {
+        tooltip.textContent = "Total downloads across all releases";
+    });
+    
+    // Update the download links to the latest release
+    updateDownloadLink('windows', latestWindowsAsset);
+    updateDownloadLink('mac', latestMacAsset);
 }
 
 /**
