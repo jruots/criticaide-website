@@ -1,0 +1,6 @@
+# robots.txt for criticaide.com
+User-agent: *
+Allow: /
+
+# Point to sitemap
+Sitemap: https://criticaide.com/sitemap.xml
