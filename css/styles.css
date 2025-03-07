@@ -633,3 +633,33 @@ ul {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
+
+/* Experimental Badge */
+.badge {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+    margin: -0.5rem auto 0.5rem auto;
+    width: fit-content;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge.experimental {
+    background-color: rgba(234, 179, 8, 0.2);  /* Yellow/amber color with transparency */
+    color: #eab308;  /* Yellow/amber text */
+    border: 1px solid rgba(234, 179, 8, 0.3);
+}
+
+/* Notice for experimental features */
+.experimental-notice {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+    padding: 0.5rem;
+    background-color: rgba(234, 179, 8, 0.1);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid #eab308;
+}
